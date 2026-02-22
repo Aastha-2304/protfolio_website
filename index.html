@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aastha Setia — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1208;
+    --warm: #c8a96e;
+    --rust: #b84c2b;
+    --muted: #8a7d6b;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.5;
+  }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(245,240,232,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.06); }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 9rem 4rem 6rem; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 1.4rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 8vw, 6.5rem); line-height: 0.92; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-name em { font-style: italic; color: var(--rust); }
+  .hero-tagline { margin-top: 1.8rem; font-size: 0.97rem; line-height: 1.85; color: var(--muted); max-width: 400px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-badges { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: 0.45rem; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+  .badge { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.75rem; background: rgba(184,76,43,0.07); border: 1px solid rgba(184,76,43,0.2); color: var(--rust); border-radius: 2px; }
+  .hero-cta { margin-top: 2.2rem; display: flex; gap: 0.75rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.85s forwards; }
+  .btn { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 1.8rem; border: 1.5px solid var(--ink); color: var(--ink); transition: all 0.3s; position: relative; overflow: hidden; display: inline-block; }
+  .btn::before { content: ''; position: absolute; inset: 0; background: var(--ink); transform: translateX(-101%); transition: transform 0.3s; }
+  .btn:hover { color: var(--cream); }
+  .btn:hover::before { transform: translateX(0); }
+  .btn span { position: relative; z-index: 1; }
+  .hero-right { background: var(--ink); position: relative; overflow: hidden; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%); }
+  .hero-right-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 9rem 4rem 4rem 6rem; }
+  .hero-stat { margin-bottom: 2.4rem; opacity: 0; animation: fadeLeft 0.8s ease forwards; }
+  .hero-stat:nth-child(1) { animation-delay: 0.5s; }
+  .hero-stat:nth-child(2) { animation-delay: 0.65s; }
+  .hero-stat:nth-child(3) { animation-delay: 0.8s; }
+  .hero-stat:nth-child(4) { animation-delay: 0.95s; }
+  .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--warm); line-height: 1; }
+  .hero-stat-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.32); margin-top: 0.3rem; }
+  .hero-decor { position: absolute; bottom: 3rem; right: 3rem; width: 90px; height: 90px; border: 1px solid rgba(200,169,110,0.2); border-radius: 50%; animation: spin 20s linear infinite; }
+  .hero-decor::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(200,169,110,0.12); border-radius: 50%; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SECTION */
+  section { padding: 7rem 4rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::before { content: ''; width: 2rem; height: 1px; background: var(--rust); flex-shrink: 0; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 3rem; }
+
+  /* ABOUT */
+  #about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+  .about-sticky { position: sticky; top: 8rem; }
+  .about-text { font-size: 0.98rem; line-height: 1.9; color: #3d3020; }
+  .about-text p + p { margin-top: 1.4rem; }
+  .about-highlight { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--ink); border-left: 3px solid var(--warm); padding-left: 1.5rem; margin: 2.5rem 0; line-height: 1.65; }
+  .linkedin-stat { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.1em; color: var(--muted); display: inline-block; margin-right: 1rem; margin-top: 0.4rem; }
+  .linkedin-stat strong { color: var(--ink); }
+
+  /* SKILLS */
+  #skills { background: var(--ink); color: var(--cream); }
+  #skills .section-label { color: var(--warm); }
+  #skills .section-label::before { background: var(--warm); }
+  #skills .section-title { color: var(--cream); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .skill-category { background: #241c0f; padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .skill-category:hover { background: #2e2210; }
+  .skill-category::before { content: attr(data-num); position: absolute; top: 1rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: rgba(200,169,110,0.06); pointer-events: none; }
+  .skill-cat-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; }
+  .skill-list { list-style: none; }
+  .skill-list li { padding: 0.42rem 0; font-size: 0.86rem; color: rgba(245,240,232,0.62); border-bottom: 1px solid rgba(200,169,110,0.07); display: flex; align-items: center; gap: 0.6rem; }
+  .skill-list li::before { content: '→'; color: var(--warm); font-size: 0.62rem; flex-shrink: 0; }
+
+  /* EXPERIENCE */
+  #experience { background: #f0ead8; }
+  .exp-timeline { position: relative; margin-top: 3rem; }
+  .exp-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--warm), transparent); }
+  .exp-item { padding-left: 3rem; padding-bottom: 4rem; position: relative; }
+  .exp-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--rust); border: 2px solid #f0ead8; box-shadow: 0 0 0 3px var(--rust); }
+  .exp-meta { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 0.3rem; text-transform: uppercase; }
+  .exp-company { font-family: 'Playfair Display', serif; font-size: 1.45rem; margin-bottom: 0.2rem; }
+  .exp-role { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+  .exp-desc { font-size: 0.9rem; line-height: 1.75; color: #4a3d28; margin-bottom: 0.8rem; }
+  .exp-achievements { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .exp-achievements li { font-size: 0.88rem; line-height: 1.7; color: #4a3d28; padding-left: 1.4rem; position: relative; }
+  .exp-achievements li::before { content: '▪'; position: absolute; left: 0; color: var(--warm); }
+  .exp-achievements strong { color: var(--ink); font-weight: 500; }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--cream); }
+  .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .cert-card { border: 1px solid rgba(26,18,8,0.1); padding: 2rem 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; background: var(--cream); }
+  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,18,8,0.08); }
+  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--rust), var(--warm)); }
+  .cert-oracle-badge { position: absolute; top: 1.4rem; right: 1.4rem; width: 34px; height: 34px; background: #c74634; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'DM Mono', monospace; font-size: 0.5rem; font-weight: 500; letter-spacing: 0.04em; }
+  .cert-issuer { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.5rem; }
+  .cert-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.3; margin-bottom: 0.7rem; }
+  .cert-date { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; }
+  .cert-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+  .cert-skill-tag { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.28rem 0.6rem; background: rgba(184,76,43,0.07); color: var(--rust); border-radius: 2px; }
+  .oracle-breakdown { margin-top: 2.5rem; padding: 2rem 2.5rem; border: 1px dashed rgba(184,76,43,0.22); background: rgba(184,76,43,0.02); }
+  .oracle-breakdown-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.8rem; margin-top: 1rem; }
+  .oracle-breakdown-item { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+
+  /* EDUCATION */
+  #education { background: #f0ead8; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .edu-card { border: 1px solid rgba(26,18,8,0.1); padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; background: var(--cream); }
+  .edu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,18,8,0.08); }
+  .edu-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--rust), var(--warm)); }
+  .edu-school { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.4rem; }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .edu-date { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; }
+
+  /* AWARDS & VOLUNTEERING */
+  #extras { background: var(--ink); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  #extras .section-label { color: var(--warm); }
+  #extras .section-label::before { background: var(--warm); }
+  #extras .section-title { color: var(--cream); }
+  .extra-item { padding: 1.4rem 0; border-bottom: 1px solid rgba(200,169,110,0.09); }
+  .extra-item:last-child { border-bottom: none; }
+  .extra-org { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.25rem; }
+  .extra-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.3rem; }
+  .extra-desc { font-size: 0.84rem; line-height: 1.7; color: rgba(245,240,232,0.45); }
+
+  /* ACTIVITIES */
+  #activities { background: #241c0f; color: var(--cream); }
+  #activities .section-label { color: var(--warm); }
+  #activities .section-label::before { background: var(--warm); }
+  #activities .section-title { color: var(--cream); }
+  .activities-flex { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2.5rem; }
+  .activity-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.65rem 1.2rem; border: 1px solid rgba(200,169,110,0.22); color: var(--warm); transition: all 0.3s; cursor: default; }
+  .activity-tag:hover { background: var(--warm); color: var(--ink); border-color: var(--warm); }
+  .interests-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,240,232,0.28); margin-bottom: 0.7rem; margin-top: 2rem; }
+  .interests-list { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: rgba(245,240,232,0.48); line-height: 2.2; }
+
+  /* CONTACT */
+  #contact { background: var(--rust); color: var(--cream); text-align: center; padding: 7rem 4rem; }
+  #contact .section-label { color: rgba(245,240,232,0.55); justify-content: center; }
+  #contact .section-label::before { background: rgba(245,240,232,0.35); }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 1.4rem; }
+  .contact-sub { font-size: 0.97rem; color: rgba(245,240,232,0.68); margin-bottom: 0.75rem; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+  .contact-open { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.45); margin-bottom: 2.5rem; }
+  .btn-light { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.5rem; border: 1.5px solid rgba(245,240,232,0.75); color: var(--cream); display: inline-block; transition: all 0.3s; position: relative; overflow: hidden; }
+  .btn-light::before { content: ''; position: absolute; inset: 0; background: var(--cream); transform: translateX(-101%); transition: transform 0.3s; }
+  .btn-light:hover { color: var(--rust); }
+  .btn-light:hover::before { transform: translateX(0); }
+  .btn-light span { position: relative; z-index: 1; }
+  .linkedin-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-left: 1rem; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: rgba(245,240,232,0.65); border-bottom: 1px solid rgba(245,240,232,0.25); padding-bottom: 2px; transition: color 0.3s; }
+  .linkedin-link:hover { color: var(--cream); }
+
+  footer { background: var(--ink); color: rgba(245,240,232,0.22); text-align: center; padding: 2rem; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { clip-path: none; min-height: 260px; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
+    #about, #education, #extras { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+    .about-sticky { position: static; }
+    .skills-grid, .certs-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .oracle-breakdown-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Aastha Setia</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#extras">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Research Intern · Data Science & Analytics · MCA Candidate</p>
+    <h1 class="hero-name">Aastha<br><em>Setia</em></h1>
+    <p class="hero-tagline">Data science enthusiast with a strong analytical foundation in Python, SQL, R & Machine Learning — turning complex datasets into strategic decisions.</p>
+    <div class="hero-badges">
+      <span class="badge">Python · SQL · ML</span>
+      <span class="badge">Oracle OCI Certified</span>
+      <span class="badge">BSc Mathematics Hons</span>
+      <span class="badge">MCA · JIMS IPU</span>
+      <span class="badge">AI for ALL · Intel · MoE</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#experience" class="btn"><span>View Experience</span></a>
+      <a href="#certifications" class="btn"><span>Certifications</span></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <div class="hero-stat">
+        <div class="hero-stat-num">6.2K+</div>
+        <div class="hero-stat-label">LinkedIn Followers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">6,000+</div>
+        <div class="hero-stat-label">CRM Interactions Analysed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12%</div>
+        <div class="hero-stat-label">SEO Traffic Growth Delivered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">750+</div>
+        <div class="hero-stat-label">Article Views Tracked & Optimised</div>
+      </div>
+      <div class="hero-decor"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-sticky">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Data meets<br>creativity &<br>purpose</h2>
+    <div style="margin-top:1.5rem;">
+      <span class="linkedin-stat"><strong>6,265</strong> followers</span>
+      <span class="linkedin-stat"><strong>500+</strong> connections</span>
+    </div>
+    <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+      <span class="badge" style="font-size:0.56rem;">Open to Work</span>
+      <span class="badge" style="font-size:0.56rem;">Analyst Roles</span>
+      <span class="badge" style="font-size:0.56rem;">Research Assistant</span>
+      <span class="badge" style="font-size:0.56rem;">Data Specialist</span>
+    </div>
+  </div>
+  <div>
+    <div class="about-text">
+      <p>I'm a Mathematics (Hons) graduate from Delhi University and currently pursuing my MCA at JIMS College, IPU. My work sits at the intersection of analytical rigour and creative thinking — from decoding engagement patterns to building machine learning intuition, I bring a methodical, insight-driven approach to every problem.</p>
+    </div>
+    <blockquote class="about-highlight">
+      "Motivated by continuous learning and growth, with a keen interest in machine learning, predictive modeling, and real-world data applications."
+    </blockquote>
+    <div class="about-text">
+      <p>I practice SQL publicly, share my learning journey on LinkedIn, and have hands-on experience across content analytics, CRM data, SEO, and research at organisations ranging from UNCTAD's Youth Action Hub to Eat My News. I hold an Oracle Cloud Infrastructure Data Science Professional certification and an AI for ALL certificate from the Ministry of Education and Intel.</p>
+      <p style="margin-top:1.4rem; color:var(--muted); font-size:0.88rem;">Beyond data: passionate about writing, fashion, painting, singing, public speaking, and volunteering — I believe the best analysts are also great storytellers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">Skills &<br>Capabilities</h2>
+  <div class="skills-grid">
+    <div class="skill-category reveal" data-num="01">
+      <div class="skill-cat-title">Technical Skills</div>
+      <ul class="skill-list">
+        <li>Python (Data Analysis & Modelling)</li>
+        <li>SQL (Queries, Subqueries, Joins)</li>
+        <li>R (Statistical Inference)</li>
+        <li>Machine Learning</li>
+        <li>Java</li>
+        <li>Data Visualization (Wolfram, Excel)</li>
+        <li>Excel (Mathematical Modelling)</li>
+        <li>SEO & Traffic Analysis</li>
+        <li>CRM Data Analysis</li>
+        <li>Economic & Financial Data Analysis</li>
+        <li>GenAI Tools</li>
+        <li>Git</li>
+      </ul>
+    </div>
+    <div class="skill-category reveal" data-num="02">
+      <div class="skill-cat-title">Interpersonal Skills</div>
+      <ul class="skill-list">
+        <li>Strong Oral & Written Communication</li>
+        <li>Strategic Planning</li>
+        <li>Research & Development</li>
+        <li>Problem-Solving & Abstraction</li>
+        <li>Independent & Team Collaboration</li>
+        <li>Attention to Detail</li>
+        <li>Performance Under Pressure</li>
+        <li>Analytical Presentation</li>
+        <li>KPI Tracking & Reporting</li>
+        <li>Project Coordination</li>
+      </ul>
+    </div>
+    <div class="skill-category reveal" data-num="03">
+      <div class="skill-cat-title">Soft Skills</div>
+      <ul class="skill-list">
+        <li>Growth-Oriented Mindset</li>
+        <li>Innovative Thinking</li>
+        <li>Collaborative Problem Solving</li>
+        <li>Solution-Focused Approach</li>
+        <li>Self-Assured Decision-Making</li>
+        <li>Public & Motivational Speaking</li>
+        <li>Content Strategy & Leadership</li>
+        <li>Digital Marketing Awareness</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Work &<br>Achievements</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">Oct 2023 – Nov 2023 · Hybrid · New Delhi</div>
+      <h3 class="exp-company">Youth Action Hub – India</h3>
+      <div class="exp-role">Research Intern · UNCTAD Initiative</div>
+      <p class="exp-desc">Selected as a Core Member for the Youth Hub-India under UNCTAD (UN Conference on Trade and Development), contributing research and content on sustainable development and international trade.</p>
+      <ul class="exp-achievements">
+        <li>Engaged in in-depth research on critical trade, development, and sustainability issues.</li>
+        <li>Created impactful content to educate and inspire action on sustainable development topics.</li>
+        <li>Collaborated with experts and professionals in a hybrid environment.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">Jan 2023 – Jun 2023 · Remote · 6 months</div>
+      <h3 class="exp-company">Eat My News</h3>
+      <div class="exp-role">Content Manager → Web Content Writer</div>
+      <ul class="exp-achievements">
+        <li><strong>Data-Driven Content:</strong> Analyzed 750+ article views and 3+ min engagement to identify high-performing topics and shape editorial strategy.</li>
+        <li><strong>SEO Growth:</strong> Leveraged keyword research (100–500 monthly searches) and delivered a <strong>12% traffic increase</strong> on key articles.</li>
+        <li><strong>Audience Insights:</strong> Analyzed ~25 daily comments to decode student interests and tailor content accordingly.</li>
+        <li><strong>Team Leadership:</strong> Oversaw content creation, publication, and cross-functional team coordination across writers, editors, and designers.</li>
+        <li><strong>Performance Rating: Excellent</strong> — verified via official experience letter from Eat My News Community HR.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">Feb 2023 – Mar 2023 · Part-time · 2 months</div>
+      <h3 class="exp-company">Marquee Fellowship Program</h3>
+      <div class="exp-role">Investment Banking Fellowship</div>
+      <p class="exp-desc">Participated in a structured fellowship covering investment banking fundamentals, financial modelling, KPI tracking, and Microsoft Office tools for analytical reporting.</p>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">Dec 2022 – Jan 2023 · Remote · 2 months</div>
+      <h3 class="exp-company">Direction Educare</h3>
+      <div class="exp-role">Content Developer</div>
+      <p class="exp-desc">Contributed to educational content development projects, building skills in creating engaging, SEO-optimised, and high-quality learning material alongside experienced professionals.</p>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">Earlier Experience</div>
+      <h3 class="exp-company">Younity.in</h3>
+      <div class="exp-role">Business Development</div>
+      <ul class="exp-achievements">
+        <li><strong>Market Analysis:</strong> Analyzed 5+ industry reports and competitor datasets to identify 2 key potential growth areas.</li>
+        <li><strong>Customer Data:</strong> Managed ~50 interactions/day; analyzed 200+ survey responses achieving 90%+ positive rates.</li>
+        <li><strong>CRM Reporting:</strong> Created 8+ data-backed presentations/month from ~1,500 lead records; tracked 3+ KPIs weekly.</li>
+        <li><strong>Historical Insights:</strong> Processed 6,000+ customer records to identify trends and recommend process improvements.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Licenses &<br>Certifications</h2>
+  <div class="certs-grid">
+
+    <div class="cert-card reveal">
+      <div class="cert-oracle-badge">OCI</div>
+      <div class="cert-issuer">Oracle</div>
+      <div class="cert-name">Oracle Cloud Infrastructure Certified Data Science Professional</div>
+      <div class="cert-date">Issued Jul 2025 · Expires Oct 2025</div>
+      <div class="cert-skills">
+        <span class="cert-skill-tag">Python</span>
+        <span class="cert-skill-tag">Machine Learning</span>
+        <span class="cert-skill-tag">Data Analytics</span>
+        <span class="cert-skill-tag">Model Building & Evaluation</span>
+        <span class="cert-skill-tag">Data Visualization</span>
+        <span class="cert-skill-tag">SQL Integration</span>
+        <span class="cert-skill-tag">GenAI</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-issuer">Ministry of Education, Govt. of India · Intel</div>
+      <div class="cert-name">AI for ALL — Aware & Appreciate</div>
+      <div class="cert-date">Issued Sep 2025</div>
+      <div class="cert-skills">
+        <span class="cert-skill-tag">Artificial Intelligence</span>
+        <span class="cert-skill-tag">AI Literacy</span>
+        <span class="cert-skill-tag">Technology Awareness</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="oracle-breakdown reveal">
+    <div class="section-label" style="margin-bottom:0.75rem;">What the Oracle Certification Covered</div>
+    <div class="oracle-breakdown-grid">
+      <div class="oracle-breakdown-item">🔸 Data analytics & exploration</div>
+      <div class="oracle-breakdown-item">🔸 Machine learning concepts</div>
+      <div class="oracle-breakdown-item">🔸 Model building & evaluation</div>
+      <div class="oracle-breakdown-item">🔸 Data visualization & insights</div>
+      <div class="oracle-breakdown-item">🔸 SQL & Python integration</div>
+      <div class="oracle-breakdown-item">🔸 Real-world OCI scenarios</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div>
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic<br>Background</h2>
+    <p style="color:var(--muted); font-size:0.88rem; max-width:300px; line-height:1.85;">A rigorous foundation bridging mathematics, statistics, and computing with technological application.</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    <div class="edu-card reveal">
+      <div class="edu-school">Jagan Institute of Management Studies (JIMS) · IPU</div>
+      <div class="edu-degree">Master of Computer Applications (MCA)</div>
+      <div class="edu-date">Sep 2025 – Present · Computer Science</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-school">University of Delhi</div>
+      <div class="edu-degree">B.Sc. Mathematics Honours</div>
+      <div class="edu-date">Nov 2022 – Jun 2025</div>
+      <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.35rem;">
+        <span class="cert-skill-tag">Statistics</span>
+        <span class="cert-skill-tag">R Programming</span>
+        <span class="cert-skill-tag">Economics</span>
+        <span class="cert-skill-tag">Mathematical Modelling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS & VOLUNTEERING -->
+<section id="extras">
+  <div>
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Honors &<br>Awards</h2>
+    <div class="extra-item">
+      <div class="extra-org">JIMS · IPU · Sep 2025</div>
+      <div class="extra-title">SIH Participation Certificate</div>
+      <div class="extra-desc">Participated in the Smart India Hackathon (SIH) — a national-level hackathon fostering innovation and problem-solving.</div>
+    </div>
+    <div class="extra-item">
+      <div class="extra-org">Special Police Unit, Moti Bagh, New Delhi · Feb 2023</div>
+      <div class="extra-title">Training in Self-Defence Techniques</div>
+      <div class="extra-desc">Completed a self-defence program by the Special Police Unit for Women and Children, associated with University of Delhi.</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Giving Back</div>
+    <h2 class="section-title">Volunteering &<br>Social Impact</h2>
+    <div class="extra-item">
+      <div class="extra-org">CRY – Child Rights and You · Oct–Nov 2023 · 2 months</div>
+      <div class="extra-title">Volunteer — Civil Rights & Social Action</div>
+      <div class="extra-desc">Contributed time and skills to support CRY's initiatives for underprivileged children in India, advocating for education, well-being, and child rights protection.</div>
+    </div>
+    <div class="extra-item">
+      <div class="extra-org">UNCTAD Youth Hub – India · 2023</div>
+      <div class="extra-title">Core Member — Youth Hub India</div>
+      <div class="extra-desc">Selected for UNCTAD's Youth Hub-India to contribute research and content on sustainable development and international trade.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="section-label">Beyond Work</div>
+  <h2 class="section-title">Activities &<br>Interests</h2>
+  <div class="activities-flex">
+    <div class="activity-tag">Volunteer Engagement Strategist</div>
+    <div class="activity-tag">Workshop Organizer</div>
+    <div class="activity-tag">Event Problem Designer</div>
+    <div class="activity-tag">Fest Creative Lead</div>
+    <div class="activity-tag">SQL Learning in Public</div>
+    <div class="activity-tag">LinkedIn Content Creator</div>
+  </div>
+  <div class="interests-title">Personal Interests</div>
+  <div class="interests-list">
+    Research & Technology · Writing · Fashion · Singing · Painting<br>
+    Public Speaking · Motivational Speaking · Volunteering · Continuous Learning
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="contact-title">Open to<br>Opportunities</h2>
+  <p class="contact-sub">Actively seeking roles in data analytics, research, analysis, and project management. Let's build something meaningful.</p>
+  <div class="contact-open">Open to: Assistant · Analyst · Research Assistant · Data Specialist · Project Manager</div>
+  <a href="mailto:aastha@example.com" class="btn-light"><span>Say Hello →</span></a>
+  <a href="https://www.linkedin.com/in/aastha-setia-3476b6255/" target="_blank" class="linkedin-link">LinkedIn ↗</a>
+</section>
+
+<footer>
+  <p>© 2025 Aastha Setia · Data Science & Analytics · Ganganagar, Rajasthan, India</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    navLinks.forEach(link => { link.style.color = link.getAttribute('href') === '#' + current ? 'var(--rust)' : ''; });
+  });
+</script>
+</body>
+</html>
