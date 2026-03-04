@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aastha Setia — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Jost:wght@300;400;500&display=swap');
+
   :root {
     --cream: #f5f0e8;
     --ink: #1a1208;
@@ -23,14 +24,14 @@
     pointer-events: none; z-index: 9999; opacity: 0.5;
   }
 
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(245,240,232,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,18,8,0.06); }
+  
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4rem; background: rgba(245,240,232,0.97); border-bottom: 1px solid rgba(26,18,8,0.06); }
   .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--rust); }
 
-  /* HERO */
+  
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 9rem 4rem 6rem; }
   .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 1.4rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
@@ -58,13 +59,11 @@
   .hero-decor::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(200,169,110,0.12); border-radius: 50%; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* SECTION */
   section { padding: 7rem 4rem; }
   .section-label { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 1rem; }
   .section-label::before { content: ''; width: 2rem; height: 1px; background: var(--rust); flex-shrink: 0; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-bottom: 3rem; }
 
-  /* ABOUT */
   #about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
   .about-sticky { position: sticky; top: 8rem; }
   .about-text { font-size: 0.98rem; line-height: 1.9; color: #3d3020; }
@@ -73,7 +72,7 @@
   .linkedin-stat { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 0.1em; color: var(--muted); display: inline-block; margin-right: 1rem; margin-top: 0.4rem; }
   .linkedin-stat strong { color: var(--ink); }
 
-  /* SKILLS */
+  
   #skills { background: var(--ink); color: var(--cream); }
   #skills .section-label { color: var(--warm); }
   #skills .section-label::before { background: var(--warm); }
@@ -87,7 +86,6 @@
   .skill-list li { padding: 0.42rem 0; font-size: 0.86rem; color: rgba(245,240,232,0.62); border-bottom: 1px solid rgba(200,169,110,0.07); display: flex; align-items: center; gap: 0.6rem; }
   .skill-list li::before { content: '→'; color: var(--warm); font-size: 0.62rem; flex-shrink: 0; }
 
-  /* EXPERIENCE */
   #experience { background: #f0ead8; }
   .exp-timeline { position: relative; margin-top: 3rem; }
   .exp-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--warm), transparent); }
@@ -102,7 +100,7 @@
   .exp-achievements li::before { content: '▪'; position: absolute; left: 0; color: var(--warm); }
   .exp-achievements strong { color: var(--ink); font-weight: 500; }
 
-  /* CERTIFICATIONS */
+  
   #certifications { background: var(--cream); }
   .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .cert-card { border: 1px solid rgba(26,18,8,0.1); padding: 2rem 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; background: var(--cream); }
@@ -118,7 +116,6 @@
   .oracle-breakdown-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.8rem; margin-top: 1rem; }
   .oracle-breakdown-item { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
 
-  /* EDUCATION */
   #education { background: #f0ead8; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   .edu-card { border: 1px solid rgba(26,18,8,0.1); padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; background: var(--cream); }
   .edu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,18,8,0.08); }
@@ -127,7 +124,6 @@
   .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 0.4rem; }
   .edu-date { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; }
 
-  /* AWARDS & VOLUNTEERING */
   #extras { background: var(--ink); color: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
   #extras .section-label { color: var(--warm); }
   #extras .section-label::before { background: var(--warm); }
@@ -138,7 +134,6 @@
   .extra-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.3rem; }
   .extra-desc { font-size: 0.84rem; line-height: 1.7; color: rgba(245,240,232,0.45); }
 
-  /* ACTIVITIES */
   #activities { background: #241c0f; color: var(--cream); }
   #activities .section-label { color: var(--warm); }
   #activities .section-label::before { background: var(--warm); }
@@ -149,7 +144,7 @@
   .interests-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,240,232,0.28); margin-bottom: 0.7rem; margin-top: 2rem; }
   .interests-list { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: rgba(245,240,232,0.48); line-height: 2.2; }
 
-  /* CONTACT */
+ 
   #contact { background: var(--rust); color: var(--cream); text-align: center; padding: 7rem 4rem; }
   #contact .section-label { color: rgba(245,240,232,0.55); justify-content: center; }
   #contact .section-label::before { background: rgba(245,240,232,0.35); }
@@ -166,13 +161,54 @@
 
   footer { background: var(--ink); color: rgba(245,240,232,0.22); text-align: center; padding: 2rem; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; }
 
-  /* ANIMATIONS */
+ 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeLeft { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
+ 
+  .about-stats-row { margin-top: 1.5rem; }
+  .about-badges-row { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .badge-sm { font-size: 0.56rem; }
+  .about-tagline { margin-top: 1.4rem; color: var(--muted); font-size: 0.88rem; }
+  .oracle-label { margin-bottom: 0.75rem; }
+  .edu-subtitle { color: var(--muted); font-size: 0.88rem; max-width: 300px; line-height: 1.85; }
+  .edu-cards-col { display: flex; flex-direction: column; gap: 1.5rem; }
+  .edu-skill-tags { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .contact-links-row { margin-top: 2rem; }
+  #footerDatetime { margin-top: 0.5rem; color: var(--warm); letter-spacing: 0.08em; }
+
+  .hobby-card { margin-top: 3rem; background: #1c1508; border: 1px solid rgba(200,169,110,0.15); padding: 2.5rem; max-width: 680px; }
+  .hobby-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .hobby-emoji { font-size: 2rem; }
+  .hobby-card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); }
+  .hobby-card-desc { font-size: 0.9rem; color: rgba(245,240,232,0.5); margin-bottom: 1.75rem; line-height: 1.75; }
+  .hobby-benefits-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.9rem; }
+  .hobby-benefits-list { list-style: none; counter-reset: hb; display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.5rem; }
+  .hobby-benefits-list li { counter-increment: hb; display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.9rem; border: 1px solid rgba(200,169,110,0.12); background: rgba(200,169,110,0.04); font-size: 0.88rem; color: rgba(245,240,232,0.75); animation: hbSlide 0.25s ease forwards; }
+  .hobby-benefits-list li::before { content: counter(hb, decimal-leading-zero); font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--warm); min-width: 1.6rem; }
+  @keyframes hbSlide { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+  .hb-text { flex: 1; }
+  .hb-delete { background: none; border: 1px solid rgba(184,76,43,0.25); color: rgba(184,76,43,0.6); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.55rem; cursor: pointer; transition: all 0.2s; }
+  .hb-delete:hover { background: var(--rust); border-color: var(--rust); color: #fff; }
+  .hobby-add-row { display: flex; gap: 0.75rem; align-items: center; }
+  .hobby-input { flex: 1; background: #120f07; border: 1px solid rgba(200,169,110,0.18); color: var(--cream); font-family: 'Jost', sans-serif; font-size: 0.88rem; padding: 0.7rem 1rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .hobby-input:focus { border-color: var(--warm); box-shadow: 0 0 0 3px rgba(200,169,110,0.1); }
+  .hobby-input::placeholder { color: rgba(245,240,232,0.22); }
+  .hobby-add-btn { background: var(--warm); color: var(--ink); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.25rem; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
+  .hobby-add-btn:hover { background: #b8952e; transform: translateY(-1px); }
+
+  
+  .contact-form { max-width: 520px; margin: 2rem auto 0; display: flex; flex-direction: column; gap: 1.1rem; text-align: left; }
+  .cf-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .cf-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,240,232,0.45); }
+  .cf-input { background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.15); color: var(--cream); font-family: 'Jost', sans-serif; font-size: 0.92rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .cf-input:focus { border-color: rgba(245,240,232,0.55); box-shadow: 0 0 0 3px rgba(245,240,232,0.07); }
+  .cf-input::placeholder { color: rgba(245,240,232,0.25); }
+  .cf-textarea { resize: vertical; min-height: 100px; }
+  .cf-submit { margin-top: 0.5rem; }
+
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
@@ -189,7 +225,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Aastha Setia</div>
   <ul class="nav-links">
@@ -203,7 +238,7 @@
   </ul>
 </nav>
 
-<!-- HERO -->
+
 <section class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Research Intern · Data Science & Analytics · MCA Candidate</p>
@@ -244,20 +279,19 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-sticky">
     <div class="section-label">About Me</div>
     <h2 class="section-title">Data meets<br>creativity &<br>purpose</h2>
-    <div style="margin-top:1.5rem;">
+    <div class="about-stats-row">
       <span class="linkedin-stat"><strong>6,265</strong> followers</span>
       <span class="linkedin-stat"><strong>500+</strong> connections</span>
     </div>
-    <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-      <span class="badge" style="font-size:0.56rem;">Open to Work</span>
-      <span class="badge" style="font-size:0.56rem;">Analyst Roles</span>
-      <span class="badge" style="font-size:0.56rem;">Research Assistant</span>
-      <span class="badge" style="font-size:0.56rem;">Data Specialist</span>
+    <div class="about-badges-row">
+      <span class="badge badge-sm">Open to Work</span>
+      <span class="badge badge-sm">Analyst Roles</span>
+      <span class="badge badge-sm">Research Assistant</span>
+      <span class="badge badge-sm">Data Specialist</span>
     </div>
   </div>
   <div>
@@ -269,12 +303,12 @@
     </blockquote>
     <div class="about-text">
       <p>I practice SQL publicly, share my learning journey on LinkedIn, and have hands-on experience across content analytics, CRM data, SEO, and research at organisations ranging from UNCTAD's Youth Action Hub to Eat My News. I hold an Oracle Cloud Infrastructure Data Science Professional certification and an AI for ALL certificate from the Ministry of Education and Intel.</p>
-      <p style="margin-top:1.4rem; color:var(--muted); font-size:0.88rem;">Beyond data: passionate about writing, fashion, painting, singing, public speaking, and volunteering — I believe the best analysts are also great storytellers.</p>
+      <p class="about-tagline">Beyond data: passionate about writing, fashion, painting, singing, public speaking, and volunteering — I believe the best analysts are also great storytellers.</p>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+
 <section id="skills">
   <div class="section-label">Expertise</div>
   <h2 class="section-title">Skills &<br>Capabilities</h2>
@@ -326,25 +360,21 @@
     </div>
   </div>
 </section>
-
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">Experience</div>
   <h2 class="section-title">Work &<br>Achievements</h2>
   <div class="exp-timeline">
-
     <div class="exp-item reveal">
       <div class="exp-meta">Oct 2023 – Nov 2023 · Hybrid · New Delhi</div>
       <h3 class="exp-company">Youth Action Hub – India</h3>
       <div class="exp-role">Research Intern · UNCTAD Initiative</div>
-      <p class="exp-desc">Selected as a Core Member for the Youth Hub-India under UNCTAD (UN Conference on Trade and Development), contributing research and content on sustainable development and international trade.</p>
+      <p class="exp-desc">Selected as a Core Member for the Youth Hub-India under UNCTAD, contributing research and content on sustainable development and international trade.</p>
       <ul class="exp-achievements">
         <li>Engaged in in-depth research on critical trade, development, and sustainability issues.</li>
         <li>Created impactful content to educate and inspire action on sustainable development topics.</li>
         <li>Collaborated with experts and professionals in a hybrid environment.</li>
       </ul>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-meta">Jan 2023 – Jun 2023 · Remote · 6 months</div>
       <h3 class="exp-company">Eat My News</h3>
@@ -353,25 +383,22 @@
         <li><strong>Data-Driven Content:</strong> Analyzed 750+ article views and 3+ min engagement to identify high-performing topics and shape editorial strategy.</li>
         <li><strong>SEO Growth:</strong> Leveraged keyword research (100–500 monthly searches) and delivered a <strong>12% traffic increase</strong> on key articles.</li>
         <li><strong>Audience Insights:</strong> Analyzed ~25 daily comments to decode student interests and tailor content accordingly.</li>
-        <li><strong>Team Leadership:</strong> Oversaw content creation, publication, and cross-functional team coordination across writers, editors, and designers.</li>
+        <li><strong>Team Leadership:</strong> Oversaw content creation, publication, and cross-functional team coordination.</li>
         <li><strong>Performance Rating: Excellent</strong> — verified via official experience letter from Eat My News Community HR.</li>
       </ul>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-meta">Feb 2023 – Mar 2023 · Part-time · 2 months</div>
       <h3 class="exp-company">Marquee Fellowship Program</h3>
       <div class="exp-role">Investment Banking Fellowship</div>
       <p class="exp-desc">Participated in a structured fellowship covering investment banking fundamentals, financial modelling, KPI tracking, and Microsoft Office tools for analytical reporting.</p>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-meta">Dec 2022 – Jan 2023 · Remote · 2 months</div>
       <h3 class="exp-company">Direction Educare</h3>
       <div class="exp-role">Content Developer</div>
-      <p class="exp-desc">Contributed to educational content development projects, building skills in creating engaging, SEO-optimised, and high-quality learning material alongside experienced professionals.</p>
+      <p class="exp-desc">Contributed to educational content development projects, building skills in creating engaging, SEO-optimised, and high-quality learning material.</p>
     </div>
-
     <div class="exp-item reveal">
       <div class="exp-meta">Earlier Experience</div>
       <h3 class="exp-company">Younity.in</h3>
@@ -383,16 +410,14 @@
         <li><strong>Historical Insights:</strong> Processed 6,000+ customer records to identify trends and recommend process improvements.</li>
       </ul>
     </div>
-
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+
 <section id="certifications">
   <div class="section-label">Credentials</div>
   <h2 class="section-title">Licenses &<br>Certifications</h2>
   <div class="certs-grid">
-
     <div class="cert-card reveal">
       <div class="cert-oracle-badge">OCI</div>
       <div class="cert-issuer">Oracle</div>
@@ -408,7 +433,6 @@
         <span class="cert-skill-tag">GenAI</span>
       </div>
     </div>
-
     <div class="cert-card reveal">
       <div class="cert-issuer">Ministry of Education, Govt. of India · Intel</div>
       <div class="cert-name">AI for ALL — Aware & Appreciate</div>
@@ -419,11 +443,9 @@
         <span class="cert-skill-tag">Technology Awareness</span>
       </div>
     </div>
-
   </div>
-
   <div class="oracle-breakdown reveal">
-    <div class="section-label" style="margin-bottom:0.75rem;">What the Oracle Certification Covered</div>
+    <div class="section-label oracle-label">What the Oracle Certification Covered</div>
     <div class="oracle-breakdown-grid">
       <div class="oracle-breakdown-item">🔸 Data analytics & exploration</div>
       <div class="oracle-breakdown-item">🔸 Machine learning concepts</div>
@@ -435,14 +457,13 @@
   </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
   <div>
     <div class="section-label">Education</div>
     <h2 class="section-title">Academic<br>Background</h2>
-    <p style="color:var(--muted); font-size:0.88rem; max-width:300px; line-height:1.85;">A rigorous foundation bridging mathematics, statistics, and computing with technological application.</p>
+    <p class="edu-subtitle">A rigorous foundation bridging mathematics, statistics, and computing with technological application.</p>
   </div>
-  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+  <div class="edu-cards-col">
     <div class="edu-card reveal">
       <div class="edu-school">Jagan Institute of Management Studies (JIMS) · IPU</div>
       <div class="edu-degree">Master of Computer Applications (MCA)</div>
@@ -452,7 +473,7 @@
       <div class="edu-school">University of Delhi</div>
       <div class="edu-degree">B.Sc. Mathematics Honours</div>
       <div class="edu-date">Nov 2022 – Jun 2025</div>
-      <div style="margin-top:0.8rem; display:flex; flex-wrap:wrap; gap:0.35rem;">
+      <div class="edu-skill-tags">
         <span class="cert-skill-tag">Statistics</span>
         <span class="cert-skill-tag">R Programming</span>
         <span class="cert-skill-tag">Economics</span>
@@ -461,8 +482,6 @@
     </div>
   </div>
 </section>
-
-<!-- AWARDS & VOLUNTEERING -->
 <section id="extras">
   <div>
     <div class="section-label">Recognition</div>
@@ -493,8 +512,6 @@
     </div>
   </div>
 </section>
-
-<!-- ACTIVITIES -->
 <section id="activities">
   <div class="section-label">Beyond Work</div>
   <h2 class="section-title">Activities &<br>Interests</h2>
@@ -511,27 +528,76 @@
     Research & Technology · Writing · Fashion · Singing · Painting<br>
     Public Speaking · Motivational Speaking · Volunteering · Continuous Learning
   </div>
+  <div class="hobby-card">
+    <div class="hobby-card-header">
+      <span class="hobby-emoji">🎨</span>
+      <h3 class="hobby-card-title">Painting</h3>
+    </div>
+    <p class="hobby-card-desc">Painting lets me slow down, think visually, and tell stories without words — a perfect creative counterbalance to analytical work.</p>
+    <p class="hobby-benefits-label">Benefits of Painting</p>
+    <ol class="hobby-benefits-list" id="hobbyBenefitsList">
+      <li>
+        <span class="hb-text">Improves focus and attention to detail</span>
+        <button class="hb-delete" onclick="deleteHobbyItem(this)">Delete</button>
+      </li>
+      <li>
+        <span class="hb-text">Boosts creativity and lateral thinking</span>
+        <button class="hb-delete" onclick="deleteHobbyItem(this)">Delete</button>
+      </li>
+      <li>
+        <span class="hb-text">Reduces stress and promotes mindfulness</span>
+        <button class="hb-delete" onclick="deleteHobbyItem(this)">Delete</button>
+      </li>
+    </ol>
+    <div class="hobby-add-row">
+      <input
+        type="text"
+        id="hobbyBenefitInput"
+        class="hobby-input"
+        placeholder="Add a new benefit…"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();addHobbyBenefit();}"
+      />
+      <button class="hobby-add-btn" onclick="addHobbyBenefit()">+ Add</button>
+    </div>
+  </div>
 </section>
-
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Let's Connect</div>
   <h2 class="contact-title">Open to<br>Opportunities</h2>
   <p class="contact-sub">Actively seeking roles in data analytics, research, analysis, and project management. Let's build something meaningful.</p>
   <div class="contact-open">Open to: Assistant · Analyst · Research Assistant · Data Specialist · Project Manager</div>
-  <a href="mailto:aastha@example.com" class="btn-light"><span>Say Hello →</span></a>
-  <a href="https://www.linkedin.com/in/aastha-setia-3476b6255/" target="_blank" class="linkedin-link">LinkedIn ↗</a>
+  <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+    <div class="cf-group">
+      <label class="cf-label" for="cf-name">Full Name</label>
+      <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+    </div>
+    <div class="cf-group">
+      <label class="cf-label" for="cf-email">Email Address</label>
+      <input class="cf-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+    </div>
+    <div class="cf-group">
+      <label class="cf-label" for="cf-message">Message</label>
+      <textarea class="cf-input cf-textarea" id="cf-message" name="message" rows="4" placeholder="Tell me about the opportunity…" required></textarea>
+    </div>
+    <button type="submit" class="btn-light cf-submit"><span>Send Message →</span></button>
+  </form>
+
+  <div class="contact-links-row">
+    <a href="mailto:aasthasetia@gmail.com" class="btn-light"><span>Say Hello →</span></a>
+    <a href="https://www.linkedin.com/in/aastha-setia-3476b6255/" target="_blank" rel="noopener noreferrer" class="linkedin-link">LinkedIn ↗</a>
+  </div>
 </section>
 
+
 <footer>
-  <p>© 2025 Aastha Setia · Data Science & Analytics · Ganganagar, Rajasthan, India</p>
+  <p>© <span id="footerYear">2025</span> Aastha Setia · Data Science & Analytics · Ganganagar, Rajasthan, India</p>
+  <p id="footerDatetime"></p>
 </footer>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   const sections = document.querySelectorAll('section[id]');
@@ -539,8 +605,75 @@
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
-    navLinks.forEach(link => { link.style.color = link.getAttribute('href') === '#' + current ? 'var(--rust)' : ''; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--rust)' : '';
+    });
   });
+
+  
+  function addHobbyBenefit() {
+    const input = document.getElementById('hobbyBenefitInput');
+    const list  = document.getElementById('hobbyBenefitsList');
+    const text  = input.value.trim();
+    if (!text) {
+      input.style.borderColor = 'var(--rust)';
+      setTimeout(() => { input.style.borderColor = ''; }, 900);
+      input.focus();
+      return;
+    }
+    const li   = document.createElement('li');
+    const span = document.createElement('span');
+    span.classList.add('hb-text');
+    span.textContent = text;
+    const del = document.createElement('button');
+    del.classList.add('hb-delete');
+    del.textContent = 'Delete';
+    del.onclick = function () { deleteHobbyItem(this); };
+    li.appendChild(span);
+    li.appendChild(del);
+    list.appendChild(li);
+    input.value = '';
+    input.focus();
+  }
+
+  
+  function deleteHobbyItem(btn) {
+    const li = btn.closest('li');
+    if (!li) return;
+    li.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+    li.style.opacity = '0';
+    li.style.transform = 'translateX(-8px)';
+    setTimeout(() => li.remove(), 220);
+  }
+
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    alert('Thank you, ' + (name || 'there') + '! Your message has been submitted. Aastha will get back to you soon.');
+    event.target.reset();
+  }
+
+  
+  function updateFooterTime() {
+    const now    = new Date();
+    const days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const formatted = days[now.getDay()] + ', ' +
+      String(now.getDate()).padStart(2,'0') + ' ' +
+      months[now.getMonth()] + ' ' +
+      now.getFullYear() + ', ' +
+      String(now.getHours()).padStart(2,'0') + ':' +
+      String(now.getMinutes()).padStart(2,'0') + ':' +
+      String(now.getSeconds()).padStart(2,'0');
+    const dtEl = document.getElementById('footerDatetime');
+    if (dtEl) dtEl.textContent = formatted;
+    const yrEl = document.getElementById('footerYear');
+    if (yrEl) yrEl.textContent = now.getFullYear();
+  }
+
+  updateFooterTime();
+  setInterval(updateFooterTime, 1000);
 </script>
 </body>
 </html>
